@@ -1,5 +1,6 @@
 import { loadEnvs } from './tools/envs.tools';
-loadEnvs(`${__dirname}/../envs/.env-${process.env.NODE_ENV}`)
+const env = process.env.NODE_ENV || 'development';
+loadEnvs(`${__dirname}/../envs/.env-${env}`);
 import './queues';
 
 process.on('uncaughtException', (error: Error) => {
