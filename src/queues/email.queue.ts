@@ -6,30 +6,30 @@ import BaseQueue from './base.queue';
 /**
  * Classe Singleton
  */
-export default class VoteQueue extends BaseQueue {
-  private static instance: VoteQueue;
-  public static getInstance(): VoteQueue {
-    if (!VoteQueue.instance) {
-      VoteQueue.instance = new VoteQueue();
+export default class LogQueue extends BaseQueue {
+  private static instance: LogQueue;
+  public static getInstance(): LogQueue {
+    if (!LogQueue.instance) {
+      LogQueue.instance = new LogQueue();
     }
-    return VoteQueue.instance;
+    return LogQueue.instance;
   }
 
   /**
    * Colocamos como private para impedir a instância via new
    */
   constructor() {
-    super(Queues.vote);
+    super(Queues.email);
     this.queue.process(this.process);
   }
 
-  private async process({ data }) {
+  private async process({ data }): Promise<void> {
     console.log(data);
     await transport.sendMail({
       to: configs.mail.default.to,
       from: configs.mail.default.from,
-      subject: 'Voto computado com sucesso',
-      text: 'Uhuuul',
+      subject: 'E-mail especial',
+      text: JSON.stringify(data),
     });
     console.log(`E-mail enviado com sucesso.`)
   }

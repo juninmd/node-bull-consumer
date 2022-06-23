@@ -15,6 +15,9 @@ export default class BaseQueue {
     this.queue = new Bull(queues, {
       redis: configs.redis,
       prefix: 'bull',
+      settings: {
+        retryProcessDelay: 500,
+      }
     });
 
     this.queue.on('failed', this.failed);
@@ -22,12 +25,12 @@ export default class BaseQueue {
     this.queue.on('completed', this.completed);
 
     this.queue.on('error', (error) => {
-      console.error(`Falha ao conectar ao redis, verifique suas configurações: ${error}`);
+      console.error(`Falha nas tasks, verifique suas configurações: ${error}`);
     });
   }
 
   protected failed(job, err) {
-    console.error(`Queue [${job.queue.name}] - ${JSON.stringify(job.data)} - Id ${job.id} has been failed`);
+    console.error(`Queue [${job.queue.name}] - ${JSON.stringify(job.data)} - Id ${job.id} has been failed, by de reason: ${job.failedReason}`);
     console.error(err);
   }
 
