@@ -3,6 +3,8 @@ import configs from '../configs';
 import transport from '../email';
 import BaseQueue from './base.queue';
 import RedisCli from '../redis';
+import { Vote } from '../entity/vote.entity';
+import Mysql from '../mysql';
 
 const redis = RedisCli.getInstance();
 
@@ -29,19 +31,29 @@ export default class VoteQueue extends BaseQueue {
 
   private async process({ data }) {
     console.log(data);
-    await this.setVotes(data.candidateNumber);
+    await this.saveVote(data.partyNumber);
     await this.sendEmail();
   }
 
-  private async setVotes(this, candidateNumber: number) {
+  private async saveVote(partyNumber: number) {
+    console.log("Salvando novo voto...")
+    const vote = new Vote()
+    vote.partyNumber = partyNumber;
+    await Mysql.manager.save(vote);
+    console.log(`Voto ${partyNumber} salvado com sucesso`)
+    const votes = await Mysql.manager.countBy(Vote, { partyNumber })
+    await this.setVotes(partyNumber, votes);
+  }
+
+  private async setVotes(partyNumber: number, votesQuantity: number) {
     let votes = await redis.getJSON('votes');
     if (votes === undefined) {
       votes = {};
     }
-    if (!votes[candidateNumber]) {
-      votes[candidateNumber] = 0;
+    if (!votes[partyNumber]) {
+      votes[partyNumber] = 0;
     }
-    votes[candidateNumber] += 1;
+    votes[partyNumber] = votesQuantity;
     await redis.setJSON('votes', votes);
   }
 

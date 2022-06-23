@@ -18,4 +18,13 @@ export default {
       to: process.env.MAIL_TO!,
     }
   },
+  mysql: {
+    type: "mysql",
+    host: "localhost",
+    port: 49153,
+    username: "root",
+    password: "mysqlpw",
+    database: "elections",
+    logging: false,
+  }
 };
