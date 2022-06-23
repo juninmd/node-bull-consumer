@@ -16,7 +16,7 @@ export default class LogQueue extends BaseQueue {
   /**
    * Colocamos como private para impedir a instância via new
    */
-  constructor() {
+  private constructor() {
     super(Queues.log);
     this.queue.process(this.process);
   }
