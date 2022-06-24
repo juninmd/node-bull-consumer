@@ -11,12 +11,6 @@
   <sub>Feito com ❤️ por <a href="https://github.com/juninmd">juninmd</a></a></sub>
 </p>
 
-## Sumário
-* [Resumo](#resumo)
-* [Tecnologias](#tecnologias)
-* [Preparando o ambiente](#preparando-o-ambiente)
-* [Tasks](#scripts-npm)
-
 ## Tecnologias
 * Express
 * Node Bull
@@ -24,7 +18,6 @@
 
 ## Resumo
 Neste projeto iremos aprender a utilizar serviços de mensageria para comunicar entre apps.
-
 
 ## Tecnologias
 | Nome      | Descrição          |
@@ -45,9 +38,3 @@ Neste projeto iremos aprender a utilizar serviços de mensageria para comunicar 
 | Comando      | Descrição          |
 | ------------- |:-------------:|
 | start    |Inicia a aplicação   |
-
-
-## Rotas default
-| Comando      | Descrição          |
-| ------------- |:-------------:|
-| http://localhost:9000/    | Envia mensagem para fila   |
