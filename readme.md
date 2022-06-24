@@ -7,34 +7,38 @@
 # Consumer
 
 <p align="center">
-  <b>Projeto para criar tarefas assincronas</b></br>
+  <b>Projeto para criar tarefas assíncronas</b></br>
   <sub>Feito com ❤️ por <a href="https://github.com/juninmd">juninmd</a></a></sub>
 </p>
 
-## Tecnologias
-* Express
-* Node Bull
-* https://mailtrap.io
-
-## Resumo
+## ✋🏻 Resumo
 Neste projeto iremos aprender a utilizar serviços de mensageria para comunicar entre apps.
 
-## Tecnologias
+## 🚀 Tecnologias
 | Nome      | Descrição          |
 | ------------- |:-------------:|
 | Typescript    | Superset javascript     |
 | Express    | Framework http super rápido      |
-| Bull    | Lib para tarefas assincronas      |
+| Bull    | Lib para tarefas assíncronas      |
+| Redis    | Banco não relacional Key Value      |
+| MySQL    | Banco Relacional da Oracle      |
+| mailtrap    | Lib para envio de e-mails      |
 
-## Preparando o Ambiente
+## 🔥 Preparando o Ambiente
 * Tenha instalado o [Visual Studio Code](https://code.visualstudio.com/)
-* Baixe o yarn
+* Baixe o yarn (se node < 16.10)
   * Ele vai baixar todas a dependências do projeto.
+* Baixe as dependências do projeto.
+  ```
+  yarn install
+  ```
 * Instale o Docker Desktop
+  * Crie uma imagem do MYSQL
 * Configure as variáveis de ambiente dentro da pasta /envs
+  * Crie um arquivo .env-development
 * Depois é só dar F5 no Visual Studio Code.
 
-## Scripts NPM
+## 📝 Scripts NPM
 | Comando      | Descrição          |
 | ------------- |:-------------:|
 | start    |Inicia a aplicação   |
