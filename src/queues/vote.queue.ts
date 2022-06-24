@@ -5,6 +5,7 @@ import BaseQueue from './base.queue';
 import RedisCli from '../redis';
 import { Vote } from '../entity/vote.entity';
 import Mysql from '../mysql';
+import { socketIo } from '../server';
 
 const redis = RedisCli.getInstance();
 
@@ -54,6 +55,12 @@ export default class VoteQueue extends BaseQueue {
     }
     votes[partyNumber] = votesQuantity;
     await redis.setJSON('votes', votes);
+    this.emitSocket(votes);
+  }
+
+  private emitSocket(votes) {
+    socketIo.emit('votes', votes);
+    console.log('Votos enviados via Socket');
   }
 
   private async sendEmail() {

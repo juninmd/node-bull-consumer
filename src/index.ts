@@ -3,6 +3,7 @@ const env = process.env.NODE_ENV || 'development';
 loadEnvs(`${__dirname}/../envs/.env-${env}`);
 import './queues';
 import AppDataSource from './mysql';
+import './server';
 
 AppDataSource.initialize()
   .then(() => {
