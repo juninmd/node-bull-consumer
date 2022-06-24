@@ -23,6 +23,7 @@ Neste projeto iremos aprender a utilizar serviços de mensageria para comunicar 
 | Redis    | Banco não relacional Key Value      |
 | MySQL    | Banco Relacional da Oracle      |
 | mailtrap    | Lib para envio de e-mails      |
+| socket.io    | Conexão em tempo real via eventos de web socket      |
 
 ## 🔥 Preparando o Ambiente
 * Tenha instalado o [Visual Studio Code](https://code.visualstudio.com/)
