@@ -20,9 +20,6 @@ export default class RedisCli {
    */
   private constructor() {
     this.redis = new Redis(configs.redis);
-    this.redis.on('connection', () => {
-      console.log('conectado');
-    });
   }
 
   async getJSON(key: string) {
