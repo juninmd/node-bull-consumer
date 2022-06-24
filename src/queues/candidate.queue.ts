@@ -12,7 +12,6 @@ const redis = RedisCli.getInstance();
  * Classe Singleton
  */
 export default class CandidateQueue extends BaseQueue {
-
   private static instance: CandidateQueue;
   public static getInstance(): CandidateQueue {
     if (!CandidateQueue.instance) {
@@ -36,13 +35,13 @@ export default class CandidateQueue extends BaseQueue {
   }
 
   private async createCandidate(name: string, partyNumber: number) {
-    console.log("Criando novo candidadto...")
-    const candidate = new Candidate()
-    candidate.name = name
-    candidate.partyNumber = partyNumber
-    await Mysql.manager.save(candidate)
-    console.log(`Candidato ${name} - ${partyNumber} criado com sucesso`)
-    const candidates = await Mysql.manager.find(Candidate, {})
+    console.log('Criando novo candidadto...');
+    const candidate = new Candidate();
+    candidate.name = name;
+    candidate.partyNumber = partyNumber;
+    await Mysql.manager.save(candidate);
+    console.log(`Candidato ${name} - ${partyNumber} criado com sucesso`);
+    const candidates = await Mysql.manager.find(Candidate, {});
     await redis.setJSON('candidates', candidates);
   }
 
@@ -53,6 +52,6 @@ export default class CandidateQueue extends BaseQueue {
       subject: 'Candidato Cadastrado com sucesso',
       text: 'Uhuuul',
     });
-    console.log(`E-mail enviado com sucesso.`)
+    console.log(`E-mail enviado com sucesso.`);
   }
 }

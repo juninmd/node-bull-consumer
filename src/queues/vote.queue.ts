@@ -12,7 +12,6 @@ const redis = RedisCli.getInstance();
  * Classe Singleton
  */
 export default class VoteQueue extends BaseQueue {
-
   private static instance: VoteQueue;
   public static getInstance(): VoteQueue {
     if (!VoteQueue.instance) {
@@ -36,12 +35,12 @@ export default class VoteQueue extends BaseQueue {
   }
 
   private async saveVote(partyNumber: number) {
-    console.log("Salvando novo voto...")
-    const vote = new Vote()
+    console.log('Salvando novo voto...');
+    const vote = new Vote();
     vote.partyNumber = partyNumber;
     await Mysql.manager.save(vote);
-    console.log(`Voto ${partyNumber} salvado com sucesso`)
-    const votes = await Mysql.manager.countBy(Vote, { partyNumber })
+    console.log(`Voto ${partyNumber} salvado com sucesso`);
+    const votes = await Mysql.manager.countBy(Vote, { partyNumber });
     await this.setVotes(partyNumber, votes);
   }
 
@@ -64,6 +63,6 @@ export default class VoteQueue extends BaseQueue {
       subject: 'Voto computado com sucesso',
       text: 'Uhuuul',
     });
-    console.log(`E-mail enviado com sucesso.`)
+    console.log(`E-mail enviado com sucesso.`);
   }
 }

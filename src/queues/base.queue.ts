@@ -17,7 +17,7 @@ export default class BaseQueue {
       prefix: 'bull',
       settings: {
         retryProcessDelay: 500,
-      }
+      },
     });
 
     this.queue.on('failed', this.failed);
@@ -30,11 +30,19 @@ export default class BaseQueue {
   }
 
   protected failed(job, err) {
-    console.error(`Queue [${job.queue.name}] - ${JSON.stringify(job.data)} - Id ${job.id} has been failed, by de reason: ${job.failedReason}`);
+    console.error(
+      `Queue [${job.queue.name}] - ${JSON.stringify(job.data)} - Id ${
+        job.id
+      } has been failed, by de reason: ${job.failedReason}`,
+    );
     console.error(err);
   }
 
   protected completed(job) {
-    console.log(`Queue [${job.queue.name}] - ${JSON.stringify(job.data)} - Id ${job.id} has been completed`);
+    console.log(
+      `Queue [${job.queue.name}] - ${JSON.stringify(job.data)} - Id ${
+        job.id
+      } has been completed`,
+    );
   }
 }

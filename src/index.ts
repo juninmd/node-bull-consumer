@@ -8,11 +8,10 @@ AppDataSource.initialize()
   .then(() => {
     console.log('MYSQL conectado com sucesso :)');
   })
-  .catch(error => {
+  .catch((error) => {
     console.error('Falha ao conectar ao MYSQL');
     console.error(error);
   });
-
 
 process.on('uncaughtException', (error: Error) => {
   console.error(`uncaughtException ${error.message}`);

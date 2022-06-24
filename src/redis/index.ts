@@ -1,4 +1,4 @@
-import Redis from "ioredis";
+import Redis from 'ioredis';
 import configs from '../configs';
 
 /**
@@ -22,7 +22,7 @@ export default class RedisCli {
     this.redis = new Redis(configs.redis);
     this.redis.on('connection', () => {
       console.log('conectado');
-    })
+    });
   }
 
   async getJSON(key: string) {
@@ -36,5 +36,4 @@ export default class RedisCli {
   async setJSON(key: string, value) {
     await this.redis.set(key, JSON.stringify(value));
   }
-
 }

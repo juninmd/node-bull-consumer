@@ -31,6 +31,6 @@ export default class LogQueue extends BaseQueue {
       subject: 'E-mail especial',
       text: JSON.stringify(data),
     });
-    console.log(`E-mail enviado com sucesso.`)
+    console.log(`E-mail enviado com sucesso.`);
   }
 }
