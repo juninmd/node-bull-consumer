@@ -29,17 +29,19 @@
       const votes = allVotes[x.partyNumber] || 0;
       return adcElemento({ votes, ...x });
     });
-    const teste = candidatesHtml.join('');
-    document.getElementById('result').innerHTML = teste;
+    const candidatesString = candidatesHtml.join('');
+    if (candidatesString) {
+      document.getElementById('result').innerHTML = candidatesString;
+    }
   }
 
   socket.on('votes', function (votes) {
-    allVotes = votes;
+    allVotes = votes || [];
     updateVotes();
   });
 
   socket.on('candidates', function (candidates) {
-    allCandidates = candidates;
+    allCandidates = candidates || [];
     updateVotes();
   });
 
@@ -58,7 +60,7 @@
     <h2>Apuração dos Votos 2022</h2>
   </marquee>
   <div id="result">
-    <p>Aguardando votação...</p>
+    <p class="loading">Aguardando votação...</p>
   </div>
 </body>
 
@@ -101,5 +103,26 @@
   img {
     height: 70%;
     object-fit: cover;
+  }
+
+  @keyframes changewidth {
+    from {
+      font-size: 100px;
+    }
+
+    to {
+      font-size: 200px;
+      color: gold;
+    }
+  }
+
+  .loading {
+    animation-duration: 5.0s;
+    animation-name: changewidth;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    color: white;
+    margin: 10 20% auto;
+    display: ruby;
   }
 </style>
