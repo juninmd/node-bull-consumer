@@ -4,7 +4,7 @@
 
 ### Node ###
 # Logs
-/envs/*
+envs/.env-development
 logs
 *.log
 npm-debug.log*

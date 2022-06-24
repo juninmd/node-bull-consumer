@@ -12,10 +12,4 @@ const AppDataSource = new DataSource({
     subscribers: [],
 })
 
-AppDataSource.initialize()
-    .then(() => {
-        console.log('works');
-    })
-    .catch((error) => console.log(error));
-
 export default AppDataSource;
