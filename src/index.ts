@@ -1,7 +1,7 @@
 import { loadEnvs } from './tools/envs.tools';
 const env = process.env.NODE_ENV || 'development';
 loadEnvs(`${__dirname}/../envs/.env-${env}`);
-import  './mysql';
+import './mysql';
 import './queues';
 import './server';
 

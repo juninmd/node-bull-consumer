@@ -27,6 +27,7 @@ Neste projeto iremos aprender a utilizar serviços de mensageria para comunicar 
 
 ## 🔥 Preparando o Ambiente
 * Tenha instalado o [Visual Studio Code](https://code.visualstudio.com/)
+* Use Node.js 20 ou superior (exigido pelo nodemailer 10)
 * Baixe o yarn (se node < 16.10)
   * Ele vai baixar todas a dependências do projeto.
 * Baixe as dependências do projeto.
