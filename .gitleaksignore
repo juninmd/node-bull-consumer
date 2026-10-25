@@ -1,0 +1,6 @@
+# Falsos positivos/residuos historicos confirmados manualmente.
+# Senha dev do MySQL (localhost) em commit historico; o codigo atual usa process.env.MYSQL_PASSWORD.
+# Formato: commit:arquivo:regra:linha (fingerprint exato; segredo novo no
+# mesmo arquivo continua sendo detectado).
+
+ed2c2cfc20438a306ecf7970e20f83bbc08cdde5:src/configs/index.ts:juninmd-hardcoded-password:26
