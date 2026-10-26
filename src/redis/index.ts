@@ -24,10 +24,15 @@ export default class RedisCli {
 
   async getJSON(key: string) {
     const redisKey = await this.redis.get(key);
-    if (redisKey) {
-      return JSON.parse(redisKey);
+    if (!redisKey) {
+      return undefined;
     }
-    return undefined;
+    try {
+      return JSON.parse(redisKey);
+    } catch (error) {
+      console.error(`Redis key [${key}] contains invalid JSON: ${error}`);
+      return undefined;
+    }
   }
 
   async setJSON(key: string, value) {

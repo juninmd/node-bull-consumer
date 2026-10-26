@@ -15,10 +15,14 @@ app.get('/', (_req, res) => {
 });
 
 io.on('connection', async (socket) => {
-  const candidates = await redis.getJSON('candidates');
-  const votes = await redis.getJSON('votes');
-  socket.emit('candidates', candidates);
-  socket.emit('votes', votes);
+  try {
+    const candidates = await redis.getJSON('candidates');
+    const votes = await redis.getJSON('votes');
+    socket.emit('candidates', candidates);
+    socket.emit('votes', votes);
+  } catch (error) {
+    console.error(`Socket [${socket.id}] failed to load state: ${error}`);
+  }
 });
 
 const port = process.env.PORT || 9001;
